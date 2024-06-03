@@ -1,0 +1,70 @@
+id: migrate_json_user
+label: Custom Migration User
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - https://jsonplaceholder.typicode.com/users
+  item_selector: ""
+  fields:
+    - name: title
+      label: "title"
+      selector: name
+    - name: field_username
+      label: "username"
+      selector: username
+    - name: field_id
+      label: "id"
+      selector: id
+    - name: field_email
+      label: "email"
+      selector: email
+    - name: field_phone
+      label: "phone"
+      selector: phone
+    - name: field_website
+      label: "website"
+      selector: website
+    - name: field_street
+      label: "street"
+      selector: address/street
+    - name: field_suite
+      label: "suite"
+      selector: address/suite
+    - name: field_city
+      label: "city"
+      selector: address/city
+    - name: field_zip_code
+      label: "zipcode"
+      selector: address/zipcode
+    - name: field_geo_lat
+      label: "lat"
+      selector: address/geo/lat
+    - name: field_geo_lng
+      label: "lng"
+      selector: address/geo/lng
+  ids:
+    field_id:
+      type: string
+process:
+  title: title
+  field_username: field_username
+  field_email: field_email
+  field_phone: field_phone
+  field_website: field_website
+  field_id: field_id
+  field_street: field_street
+  field_suite: field_suite
+  field_city: field_city
+  field_zip_code: field_zip_code
+  field_geo_lat: field_geo_lat
+  field_geo_lng: field_geo_lng
+  uid:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: user
+destination:
+  plugin: "entity:node"

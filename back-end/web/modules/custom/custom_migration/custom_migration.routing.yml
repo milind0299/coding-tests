@@ -1,0 +1,7 @@
+custom_migration.users:
+  path: "/users"
+  defaults:
+    _controller: '\Drupal\custom_migration\Controller\User::getUserAndCompany'
+    _title: "User and Company"
+  requirements:
+    _permission: "access content"
